@@ -14,11 +14,11 @@ export class AuthController {
 
   @MessagePattern('auth.login.user')
   loginUser(@Payload() loginUserDto: LoginUserDto) {
-    return loginUserDto;
+    return this.authService.loginUser(loginUserDto);
   }
 
   @MessagePattern('auth.verify.token')
-  verifyToken() {
-    return 'verify token in auth-ms';
+  verifyToken(@Payload() token: string) {
+    return this.authService.verifyToken(token);
   }
 }
